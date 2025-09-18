@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: jingqu-backend
+    env: java
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/jingqu-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: JAVA_VERSION
+        value: 21
+    plan: free
+    branch: backend
