@@ -13,8 +13,8 @@ public class Favorite {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column(name = "project_id", nullable = false)
-    private Long projectId;
+    @Column(name = "scenic_spot_id", nullable = false)
+    private Long scenicSpotId;
 
     @Column(name = "create_time")
     private LocalDateTime createTime;
@@ -23,9 +23,9 @@ public class Favorite {
     public Favorite() {
     }
 
-    public Favorite(Long userId, Long projectId) {
+    public Favorite(Long userId, Long scenicSpotId) {
         this.userId = userId;
-        this.projectId = projectId;
+        this.scenicSpotId = scenicSpotId;
         this.createTime = LocalDateTime.now();
     }
 
@@ -46,12 +46,12 @@ public class Favorite {
         this.userId = userId;
     }
 
-    public Long getProjectId() {
-        return projectId;
+    public Long getScenicSpotId() {
+        return scenicSpotId;
     }
 
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
+    public void setScenicSpotId(Long scenicSpotId) {
+        this.scenicSpotId = scenicSpotId;
     }
 
     public LocalDateTime getCreateTime() {

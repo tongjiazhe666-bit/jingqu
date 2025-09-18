@@ -14,6 +14,7 @@ public class UserLikeService {
     @Autowired
     private UserLikeRepository userLikeRepository;
     
+    @Transactional
     public boolean toggleLike(Long userId, Long scenicSpotId) {
         boolean exists = userLikeRepository.existsByUserIdAndScenicSpotId(userId, scenicSpotId);
         

@@ -62,15 +62,25 @@ CREATE TABLE IF NOT EXISTS `project` (
 CREATE TABLE `favorites` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `user_id` bigint(20) NOT NULL COMMENT '用户ID',
-  `project_id` bigint(20) NOT NULL COMMENT '项目ID',
+  `scenic_spot_id` bigint(20) NOT NULL COMMENT '景区ID',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_user_project` (`user_id`, `project_id`),
+  UNIQUE KEY `uk_user_scenic_spot` (`user_id`, `scenic_spot_id`),
   KEY `idx_user_id` (`user_id`),
-  KEY `idx_project_id` (`project_id`),
+  KEY `idx_scenic_spot_id` (`scenic_spot_id`),
   CONSTRAINT `fk_favorites_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_favorites_project` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE CASCADE
+  CONSTRAINT `fk_favorites_scenic_spot` FOREIGN KEY (`scenic_spot_id`) REFERENCES `scenic_spot` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='收藏关系表';
 
-INSERT INTO `favorites` (`user_id`, `project_id`, `create_time`) VALUES
-(1, 1, '2024-01-15 10:30:00');
+INSERT INTO `favorites` (`user_id`, `scenic_spot_id`, `create_time`) VALUES
+(3, 4, '2024-01-15 10:30:00'),
+(3, 5, '2024-01-15 10:30:00'),
+(3, 6, '2024-01-15 10:30:00'),
+(3, 7, '2024-01-15 10:30:00'),
+(3, 8, '2024-01-15 10:30:00'),
+(3, 9, '2024-01-15 10:30:00'),
+(3, 10, '2024-01-15 10:30:00'),
+(3, 11, '2024-01-15 10:30:00'),
+(3, 12, '2024-01-15 10:30:00'),
+(3, 13, '2024-01-15 10:30:00'),
+(3, 14, '2024-01-15 10:30:00');

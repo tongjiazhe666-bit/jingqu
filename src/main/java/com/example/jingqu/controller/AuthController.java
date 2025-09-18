@@ -85,7 +85,7 @@ public class AuthController {
                 
                 // 生成JWT token
                 token = jwtUtil.generateToken(existingUser.getId());
-                
+
                 // 构建用户信息
                 userInfo.put("nickName", existingUser.getNickName());
                 userInfo.put("avatarUrl", existingUser.getAvatarUrl());
@@ -121,7 +121,7 @@ public class AuthController {
             responseData.put("token", token);
             responseData.put("userInfo", userInfo.isEmpty() ? null : userInfo);
             responseData.put("flag", flag);
-            
+            System.out.println(token);
             return ApiResponse.success(responseData);
             
         } catch (Exception e) {

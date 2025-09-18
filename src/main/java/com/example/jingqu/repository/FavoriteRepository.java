@@ -12,18 +12,18 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
     
     List<Favorite> findByUserId(Long userId);
     
-    List<Favorite> findByProjectId(Long projectId);
+    List<Favorite> findByScenicSpotId(Long scenicSpotId);
     
-    Favorite findByUserIdAndProjectId(Long userId, Long projectId);
+    Favorite findByUserIdAndScenicSpotId(Long userId, Long scenicSpotId);
     
-    boolean existsByUserIdAndProjectId(Long userId, Long projectId);
+    boolean existsByUserIdAndScenicSpotId(Long userId, Long scenicSpotId);
     
     long countByUserId(Long userId);
     
-    long countByProjectId(Long projectId);
+    long countByScenicSpotId(Long scenicSpotId);
     
     @Query("SELECT f FROM Favorite f WHERE f.userId = :userId ORDER BY f.createTime DESC")
     List<Favorite> findUserFavoritesOrderByCreateTimeDesc(Long userId);
     
-    void deleteByUserIdAndProjectId(Long userId, Long projectId);
+    void deleteByUserIdAndScenicSpotId(Long userId, Long scenicSpotId);
 }

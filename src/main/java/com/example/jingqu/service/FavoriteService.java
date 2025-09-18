@@ -4,6 +4,7 @@ import com.example.jingqu.entity.Favorite;
 import com.example.jingqu.repository.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,28 +18,29 @@ public class FavoriteService {
         return favoriteRepository.findUserFavoritesOrderByCreateTimeDesc(userId);
     }
     
-    public Favorite addFavorite(Long userId, Long projectId) {
-        Favorite favorite = new Favorite(userId, projectId);
+    public Favorite addFavorite(Long userId, Long scenicSpotId) {
+        Favorite favorite = new Favorite(userId, scenicSpotId);
         return favoriteRepository.save(favorite);
     }
     
-    public void removeFavorite(Long userId, Long projectId) {
-        favoriteRepository.deleteByUserIdAndProjectId(userId, projectId);
+    @Transactional
+    public void removeFavorite(Long userId, Long scenicSpotId) {
+        favoriteRepository.deleteByUserIdAndScenicSpotId(userId, scenicSpotId);
     }
     
-    public boolean isFavorite(Long userId, Long projectId) {
-        return favoriteRepository.existsByUserIdAndProjectId(userId, projectId);
+    public boolean isFavorite(Long userId, Long scenicSpotId) {
+        return favoriteRepository.existsByUserIdAndScenicSpotId(userId, scenicSpotId);
     }
     
     public long getUserFavoriteCount(Long userId) {
         return favoriteRepository.countByUserId(userId);
     }
     
-    public long getProjectFavoriteCount(Long projectId) {
-        return favoriteRepository.countByProjectId(projectId);
+    public long getScenicSpotFavoriteCount(Long scenicSpotId) {
+        return favoriteRepository.countByScenicSpotId(scenicSpotId);
     }
     
-    public Favorite getFavorite(Long userId, Long projectId) {
-        return favoriteRepository.findByUserIdAndProjectId(userId, projectId);
+    public Favorite getFavorite(Long userId, Long scenicSpotId) {
+        return favoriteRepository.findByUserIdAndScenicSpotId(userId, scenicSpotId);
     }
 }
